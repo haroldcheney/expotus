@@ -17,3 +17,8 @@ github_username:  haroldcheney
 
 # Build settings
 markdown: kramdown
+
+collections:
+  expotuses:
+    output: true
+    permalink: /expotus/:path/

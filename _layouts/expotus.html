@@ -1,0 +1,25 @@
+---
+layout: page
+---
+{{ content }}
+
+<div class="facts">
+  <table>
+    <thead>
+      <tr>
+        <td>Dates</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% assign sorted = page.facts | sort: "start" %}
+      {% for fact in sorted %}
+
+        <tr>
+          <td>{{ fact.start }} {{ fact.end}}</td>
+          <td>{{ fact.detail }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
