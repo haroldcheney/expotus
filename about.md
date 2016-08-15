@@ -1,9 +1,8 @@
 ---
 layout: page
-title: About
+title: About exPOTUS.com
 permalink: /about/
 ---
-
 # What is this site about?
 This site is about the lives of ex-Presidents of the United States.
 
