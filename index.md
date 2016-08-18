@@ -5,13 +5,13 @@ title: Ex-Presidents of the United States
 This is a list of all ex-Presidents of the United States and their periods
 of ex-presidency.
 
-<table>
+<table id="expotus-table">
   <thead>
     <tr>
-      <td>#</td>
-      <td>Name</td>
-      <td>Start</td>
-      <td>End</td>
+      <th>#</th>
+      <th>Name</th>
+      <th>Start</th>
+      <th>End</th>
     </tr>
   </thead>
   <tbody>
@@ -27,3 +27,5 @@ of ex-presidency.
     {% endfor %}
   </tbody>
 </table>
+
+{% include datatable.html table_id="expotus-table" %}

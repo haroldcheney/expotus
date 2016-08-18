@@ -4,11 +4,11 @@ layout: default
 {{ content }}
 
 <div class="facts">
-  <table>
+  <table id="facts-table">
     <thead>
       <tr>
-        <td>Dates</td>
-        <td>Description</td>
+        <th>Dates</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
@@ -23,3 +23,5 @@ layout: default
     </tbody>
   </table>
 </div>
+
+{% include datatable.html table_id="facts-table" %}
