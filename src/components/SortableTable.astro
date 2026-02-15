@@ -1,0 +1,72 @@
+---
+/**
+ * A table that supports client-side sorting by clicking column headers.
+ * Wrap a <table> element and add data-sortable="key" to <th> elements.
+ */
+---
+
+<div class="list sortable-table">
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll('.sortable-table table').forEach((table) => {
+    const headers = table.querySelectorAll('th[data-sortable]');
+    const tbody = table.querySelector('tbody');
+    if (!tbody) return;
+
+    let currentSort = '';
+    let ascending = true;
+
+    headers.forEach((th) => {
+      th.style.cursor = 'pointer';
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = th.textContent;
+      link.addEventListener('click', (e) => e.preventDefault());
+      th.textContent = '';
+      th.appendChild(link);
+
+      th.addEventListener('click', () => {
+        const key = th.getAttribute('data-sortable')!;
+        if (currentSort === key) {
+          ascending = !ascending;
+        } else {
+          currentSort = key;
+          ascending = true;
+        }
+
+        // Update header classes
+        headers.forEach((h) => h.classList.remove('asc', 'desc'));
+        th.classList.add(ascending ? 'asc' : 'desc');
+
+        // Sort rows
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a, b) => {
+          const aCell = a.querySelector(`td[data-sort-key="${key}"]`);
+          const bCell = b.querySelector(`td[data-sort-key="${key}"]`);
+          if (!aCell || !bCell) return 0;
+          const aVal = aCell.getAttribute('data-sort-value') || aCell.textContent || '';
+          const bVal = bCell.getAttribute('data-sort-value') || bCell.textContent || '';
+
+          // Try numeric comparison first
+          const aNum = parseFloat(aVal);
+          const bNum = parseFloat(bVal);
+          if (!isNaN(aNum) && !isNaN(bNum)) {
+            return ascending ? aNum - bNum : bNum - aNum;
+          }
+
+          return ascending ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+        });
+
+        // Re-render with updated row numbers and zebra striping
+        rows.forEach((row, i) => {
+          const numCell = row.querySelector('td[data-sort-key="rownum"]');
+          if (numCell) numCell.textContent = String(i + 1);
+          row.className = i % 2 === 0 ? 'odd' : 'even';
+          tbody.appendChild(row);
+        });
+      });
+    });
+  });
+</script>

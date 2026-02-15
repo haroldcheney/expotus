@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import SortableTable from '../components/SortableTable.astro';
+import { formatPartialDate } from '../lib/dates';
+
+const allPresidents = await getCollection('presidents');
+const sorted = allPresidents.sort((a, b) => a.data.startDate.localeCompare(b.data.startDate));
+
+// Flatten all facts with their president reference
+const allFacts = sorted.flatMap((p) =>
+  p.data.facts.map((fact) => ({
+    ...fact,
+    presidentName: `${p.data.firstName} ${p.data.lastName}`,
+    presidentSlug: p.slug,
+  }))
+).sort((a, b) => (a.startDate || '').localeCompare(b.startDate || ''));
+---
+
+<Layout title="Ex-Presidential Facts">
+  <Nav active="facts" />
+  <div class="body">
+    <h1>Ex-Presidential Facts</h1>
+    <p>
+      This is a list of facts about all ex-presidents.
+      You can change how the list is sorted by clicking on the column headers.
+    </p>
+    <SortableTable>
+      <table>
+        <thead>
+          <tr>
+            <th data-sortable="president">Ex-President</th>
+            <th data-sortable="dates">Dates</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allFacts.map((fact, i) => {
+            const dates = [
+              formatPartialDate(fact.startDate),
+              fact.endDate ? `to ${formatPartialDate(fact.endDate)}` : '',
+            ].filter(Boolean).join(' ');
+            return (
+              <tr class={i % 2 === 0 ? 'odd' : 'even'}>
+                <td data-sort-key="president" data-sort-value={fact.presidentName}>
+                  {fact.presidentName}
+                </td>
+                <td data-sort-key="dates" data-sort-value={fact.startDate || ''}>
+                  {dates}
+                </td>
+                <td set:html={fact.detail} />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </SortableTable>
+  </div>
+</Layout>

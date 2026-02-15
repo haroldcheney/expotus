@@ -1,0 +1,25 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'exPotus.com' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/main.css`} />
+  </head>
+  <body>
+    <div class="page">
+      <div id="logo">
+        <img src={`${import.meta.env.BASE_URL}images/expotus_logo.png`} alt="exPOTUS logo" />
+      </div>
+      <div id="tagline">Fun facts about ex-Presidents of the United States</div>
+      <slot />
+    </div>
+  </body>
+</html>

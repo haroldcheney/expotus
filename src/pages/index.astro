@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import SortableTable from '../components/SortableTable.astro';
+import { formatDate, durationInDays, durationInYearsMonthsDays, formatDuration, formatNumber } from '../lib/dates';
+
+const allPresidents = await getCollection('presidents');
+const presidents = allPresidents
+  .sort((a, b) => a.data.startDate.localeCompare(b.data.startDate));
+---
+
+<Layout title="Ex-Presidents of the United States">
+  <Nav active="presidents" />
+  <div class="body">
+    <h1>Ex-Presidents of the United States</h1>
+    <p>
+      This is a list of all ex-Presidents of the United States and their periods of ex-presidency.
+      You can change how the list is sorted by clicking on the column headers.
+      To see details about an ex-president, click on his name.
+    </p>
+    <SortableTable>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-sortable="name">Name</th>
+            <th data-sortable="start">Start</th>
+            <th data-sortable="end">End</th>
+            <th data-sortable="duration">Duration</th>
+            <th data-sortable="days">Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          {presidents.map((p, i) => {
+            const days = durationInDays(p.data.startDate, p.data.endDate);
+            const duration = durationInYearsMonthsDays(p.data.startDate, p.data.endDate);
+            const fullName = `${p.data.firstName} ${p.data.lastName}`;
+            return (
+              <tr class={i % 2 === 0 ? 'odd' : 'even'}>
+                <td data-sort-key="rownum">{i + 1}</td>
+                <td data-sort-key="name" data-sort-value={fullName}>
+                  <a href={`${import.meta.env.BASE_URL}presidents/${p.slug}/`}>{fullName}</a>
+                </td>
+                <td data-sort-key="start" data-sort-value={p.data.startDate}>
+                  {formatDate(p.data.startDate)}
+                </td>
+                <td data-sort-key="end" data-sort-value={p.data.endDate || '9999-12-31'}>
+                  {formatDate(p.data.endDate, 'present')}
+                </td>
+                <td data-sort-key="duration" data-sort-value={String(days)}>
+                  {formatDuration(duration)}
+                </td>
+                <td data-sort-key="days" data-sort-value={String(days)}>
+                  {formatNumber(days)}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </SortableTable>
+  </div>
+</Layout>
