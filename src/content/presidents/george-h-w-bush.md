@@ -3,6 +3,7 @@ id: 33
 firstName: "George H. W."
 lastName: "Bush"
 startDate: "1993-01-20"
+endDate: "2018-11-30"
 startTime: 0
 endTime: 0
 facts:
