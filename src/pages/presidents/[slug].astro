@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import { formatDate, formatPartialDate } from '../../lib/dates';
+
+export async function getStaticPaths() {
+  const allPresidents = await getCollection('presidents');
+  const sorted = allPresidents.sort((a, b) => a.data.startDate.localeCompare(b.data.startDate));
+  return sorted.map((president, i) => ({
+    params: { slug: president.slug },
+    props: {
+      president,
+      prevSlug: i > 0 ? sorted[i - 1].slug : null,
+      nextSlug: i < sorted.length - 1 ? sorted[i + 1].slug : null,
+    },
+  }));
+}
+
+const { president, prevSlug, nextSlug } = Astro.props;
+const { data } = president;
+const fullName = `${data.firstName} ${data.lastName}`;
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title={`${fullName} - exPotus.com`}>
+  <Nav active="presidents">
+    {prevSlug
+      ? <span class="menuButton"><a href={`${base}presidents/${prevSlug}/`}>Previous</a></span>
+      : <span class="menuButton">Previous</span>
+    }
+    {nextSlug
+      ? <span class="menuButton"><a href={`${base}presidents/${nextSlug}/`}>Next</a></span>
+      : <span class="menuButton">Next</span>
+    }
+  </Nav>
+  <div class="body">
+    <h1>
+      {fullName}
+      <span id="expotus_dates">
+        {formatDate(data.startDate)} to {formatDate(data.endDate, 'present')}
+      </span>
+    </h1>
+
+    <p>
+      This is a list of facts about the ex-presidency of {fullName}.
+    </p>
+
+    <div class="list">
+      <table>
+        <thead>
+          <tr>
+            <th id="fact_dates">Dates</th>
+            <th id="fact_desc">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.facts.map((fact, i) => {
+            const dates = [
+              formatPartialDate(fact.startDate),
+              fact.endDate ? `to ${formatPartialDate(fact.endDate)}` : '',
+            ].filter(Boolean).join(' ');
+            return (
+              <tr class={i % 2 === 0 ? 'odd' : 'even'}>
+                <td>{dates}</td>
+                <td set:html={fact.detail} />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>

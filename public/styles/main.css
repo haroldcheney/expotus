@@ -1,0 +1,141 @@
+html * {
+  margin: 0;
+}
+
+body {
+  color: #333;
+  font: 12px verdana, arial, helvetica, sans-serif;
+  background-color: gray;
+}
+
+.page {
+  background: #fff url(../images/vellum-transparent-background.png) repeat;
+  margin: 20px;
+  min-height: 1200px;
+  border: thin solid;
+}
+
+#expotus_dates {
+  font-size: 14px;
+}
+
+.about {
+  padding: 20px;
+}
+
+#logo {
+  padding: 20px 20px 0 20px;
+}
+
+#tagline {
+  font: 20px times, serif;
+  font-style: italic;
+  padding: 0 20px 20px 20px;
+}
+
+a:link, a:visited, a:hover {
+  color: #666;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p {
+  padding: .5em;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 24px;
+  margin: .8em 0 .3em 0;
+}
+
+h3 {
+  margin-top: 1em;
+}
+
+.body {
+  margin: 0 15px 10px 15px;
+}
+
+/* NAVIGATION MENU */
+
+.nav {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-style: solid none;
+  margin-top: 5px;
+  padding: 7px 12px;
+}
+
+.menuButton {
+  color: #999;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0 6px;
+}
+.menuButton a {
+  color: #333;
+}
+
+/* TABLES */
+
+table {
+  border: 1px solid #ccc;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  font: 11px verdana, arial, helvetica, sans-serif;
+  line-height: 12px;
+  padding: 5px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #eee;
+  color: #666;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 17px;
+  padding: 2px 6px;
+}
+
+th a:link, th a:visited, th a:hover {
+  color: #333;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+}
+
+th[data-sortable] {
+  cursor: pointer;
+}
+
+th.asc a::after {
+  content: ' \25B2';
+  font-size: 8px;
+}
+th.desc a::after {
+  content: ' \25BC';
+  font-size: 8px;
+}
+
+.odd {
+  background: #f7f7f7;
+}
+.even {
+  background: #fff;
+}
+
+.list {
+  padding: .5em;
+}
+
+.list th, .list td {
+  border-left: 1px solid #ddd;
+}
+.list th:hover, .list tr:hover {
+  background: #b2d1ff;
+}

@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import SortableTable from '../components/SortableTable.astro';
+import { formatDate, formatDuration, formatNumber } from '../lib/dates';
+import { calculateEras, getFullName, getShortName, type President } from '../lib/eras';
+
+const allPresidents = await getCollection('presidents');
+const presidentData: President[] = allPresidents.map((p) => ({
+  id: p.data.id,
+  slug: p.slug,
+  firstName: p.data.firstName,
+  lastName: p.data.lastName,
+  uniqueName: p.data.uniqueName,
+  startDate: p.data.startDate,
+  endDate: p.data.endDate,
+  startTime: p.data.startTime,
+  endTime: p.data.endTime,
+}));
+
+const eras = calculateEras(presidentData);
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Ex-Presidential Eras">
+  <Nav active="eras" />
+  <div class="body">
+    <h1>Ex-Presidential Eras</h1>
+    <p>
+      This is a list of the times in history when the number of ex-presidents changed.
+      You can change how the list is sorted by clicking on the column headers.
+    </p>
+    <SortableTable>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-sortable="start">Start</th>
+            <th>End</th>
+            <th data-sortable="duration">Duration</th>
+            <th>Days</th>
+            <th data-sortable="count">Count</th>
+            <th>List</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          {eras.map((era, i) => (
+            <tr class={i % 2 === 0 ? 'odd' : 'even'}>
+              <td data-sort-key="rownum">{i + 1}</td>
+              <td data-sort-key="start" data-sort-value={era.startDate}>
+                {formatDate(era.startDate)}
+              </td>
+              <td>{formatDate(era.endDate, 'present')}</td>
+              <td data-sort-key="duration" data-sort-value={String(era.durationInDays)}>
+                {era.durationInDays > 0
+                  ? formatDuration(era.durationInYearsMonthsDays)
+                  : 'less than one day'}
+              </td>
+              <td>
+                {era.durationInDays > 0 ? formatNumber(era.durationInDays) : ''}
+              </td>
+              <td data-sort-key="count" data-sort-value={String(era.presidents.length)}>
+                {formatNumber(era.presidents.length)}
+              </td>
+              <td>
+                {era.presidents.map((p, j) => (
+                  <Fragment>
+                    {j > 0 && ', '}
+                    <a href={`${base}presidents/${p.slug}/`}>{getShortName(p)}</a>
+                  </Fragment>
+                ))}
+              </td>
+              <td>
+                {era.added && (
+                  <Fragment>
+                    + <a href={`${base}presidents/${era.added.slug}/`}>{getShortName(era.added)}</a>
+                    {era.dropped && ', '}
+                  </Fragment>
+                )}
+                {era.dropped && (
+                  <Fragment>
+                    &minus; <a href={`${base}presidents/${era.dropped.slug}/`}>{getShortName(era.dropped)}</a>
+                  </Fragment>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </SortableTable>
+  </div>
+</Layout>
