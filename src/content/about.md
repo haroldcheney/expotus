@@ -21,6 +21,7 @@ after being president. What other notable things did ex-presidents do?
 I built this site in order to explore and answer my childhood questions about ex-presidents.
 I now know that I experienced one of the few times in history when there were no living ex-presidents,
 and I then watched that number grow to five, a number reached only once before, and never exceeded.
+(Okay, it's happened a couple more times since I first wrote that...)
 
 ### What is an exPOTUS?
 
