@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import { formatDate, formatPartialDate } from '../../lib/dates';
+import Citation from '../../components/Citation.astro';
 
 export async function getStaticPaths() {
   const allPresidents = await getCollection('presidents');
@@ -63,7 +64,7 @@ const base = import.meta.env.BASE_URL;
             return (
               <tr class={i % 2 === 0 ? 'odd' : 'even'}>
                 <td>{dates}</td>
-                <td set:html={fact.detail} />
+                <td><Fragment set:html={fact.detail} /> <Citation citation={fact.citation} /></td>
               </tr>
             );
           })}

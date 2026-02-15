@@ -1,0 +1,23 @@
+---
+interface Props {
+  citation?: string;
+}
+
+const { citation } = Astro.props;
+if (!citation) return;
+
+const isUrl = citation.startsWith('http://') || citation.startsWith('https://');
+let displayText = citation;
+if (isUrl) {
+  try {
+    displayText = new URL(citation).hostname.replace(/^www\./, '');
+  } catch {
+    displayText = citation;
+  }
+}
+---
+
+{isUrl
+  ? <span class="citation">(<a href={citation}>{displayText}</a>)</span>
+  : <span class="citation">({citation})</span>
+}

@@ -4,6 +4,7 @@ const factSchema = z.object({
   detail: z.string(),
   startDate: z.string().optional(),
   endDate: z.string().optional(),
+  citation: z.string().optional(),
 });
 
 const presidents = defineCollection({
