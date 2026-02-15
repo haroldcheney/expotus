@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import SortableTable from '../components/SortableTable.astro';
 import { formatPartialDate } from '../lib/dates';
+import Citation from '../components/Citation.astro';
 
 const allPresidents = await getCollection('presidents');
 const sorted = allPresidents.sort((a, b) => a.data.startDate.localeCompare(b.data.startDate));
@@ -49,7 +50,7 @@ const allFacts = sorted.flatMap((p) =>
                 <td data-sort-key="dates" data-sort-value={fact.startDate || ''}>
                   {dates}
                 </td>
-                <td set:html={fact.detail} />
+                <td><Fragment set:html={fact.detail} /> <Citation citation={fact.citation} /></td>
               </tr>
             );
           })}
