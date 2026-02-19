@@ -4,14 +4,13 @@ html * {
 
 body {
   color: #333;
-  font: 12px verdana, arial, helvetica, sans-serif;
+  font: 14px verdana, arial, helvetica, sans-serif;
   background-color: gray;
 }
 
 .page {
   background: #fff url(../images/vellum-transparent-background.png) repeat;
   margin: 20px;
-  min-height: 1200px;
   border: thin solid;
 }
 
@@ -86,8 +85,8 @@ table {
 }
 
 td, th {
-  font: 11px verdana, arial, helvetica, sans-serif;
-  line-height: 12px;
+  font: 13px verdana, arial, helvetica, sans-serif;
+  line-height: 1.4;
   padding: 5px 6px;
   text-align: left;
   vertical-align: top;
@@ -96,10 +95,9 @@ td, th {
 th {
   background: #eee;
   color: #666;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
-  line-height: 17px;
-  padding: 2px 6px;
+  padding: 4px 6px;
 }
 
 th a:link, th a:visited, th a:hover {
@@ -131,6 +129,8 @@ th.desc a::after {
 
 .list {
   padding: .5em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .list th, .list td {
@@ -138,6 +138,39 @@ th.desc a::after {
 }
 .list th:hover, .list tr:hover {
   background: #b2d1ff;
+}
+
+/* RESPONSIVE / MOBILE */
+
+@media (max-width: 640px) {
+  .page {
+    margin: 0;
+    border: none;
+  }
+
+  .nav {
+    padding: 10px 12px;
+  }
+
+  .menuButton {
+    font-size: 14px;
+    padding: 4px 8px;
+    display: inline-block;
+  }
+
+  .body {
+    margin: 0 10px 10px 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  #expotus_dates {
+    display: block;
+    font-size: 13px;
+    margin-top: 4px;
+  }
 }
 
 /* CITATIONS */
