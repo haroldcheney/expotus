@@ -9,4 +9,6 @@ endTime: 0
 facts:
   - detail: "Attempted to resume his law practice, but his ill health prevented him from doing much work"
     startDate: "1885"
+    citation: "https://millercenter.org/president/arthur/life-after-the-presidency"
+    citationDate: "2026-02-20"
 ---
