@@ -9,4 +9,6 @@ endTime: 0
 facts:
   - detail: "Made an honorary Knight Grand Cross of the Order of the Bath by Queen Elizabeth II"
     startDate: "1993"
+    citation: "https://www.deseret.com/1993/11/30/19079186/bush-receives-knighthood-from-queen-elizabeth-ii/"
+    citationDate: "2026-02-20"
 ---

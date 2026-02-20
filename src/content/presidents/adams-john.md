@@ -9,4 +9,6 @@ endTime: 1
 facts:
   - detail: "Became the first ex-president to have a son become President of the United States"
     startDate: "1825-03-04"
+    citation: "https://millercenter.org/president/adams/life-after-the-presidency"
+    citationDate: "2026-02-20"
 ---

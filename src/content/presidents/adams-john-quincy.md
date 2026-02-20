@@ -15,6 +15,8 @@ facts:
     citationDate: "2026-02-20"
   - detail: "Unsuccessfully ran for Governor of Massachusetts"
     startDate: "1834"
+    citation: "https://en.wikipedia.org/wiki/1833_Massachusetts_gubernatorial_election"
+    citationDate: "2026-02-20"
   - detail: "Represented the defendants in United States v. The Amistad Africans in the Supreme Court of the United States"
     startDate: "1841"
     citation: "https://billofrightsinstitute.org/essays/john-quincy-adams-and-the-amistad"
