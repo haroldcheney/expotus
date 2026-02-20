@@ -8,6 +8,8 @@ endTime: 0
 facts:
   - detail: "Published an autobiography, <cite>My Life</cite>"
     startDate: "2004"
+    citation: "https://www.penguinrandomhouse.com/books/28922/my-life-by-bill-clinton/"
+    citationDate: "2026-02-20"
   - detail: "Traveled to North Korea on behalf of two American journalists imprisoned in North Korea, securing their pardon"
     startDate: "2009"
 ---
