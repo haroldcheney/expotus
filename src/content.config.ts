@@ -5,6 +5,15 @@ const factSchema = z.object({
   startDate: z.string().optional(),
   endDate: z.string().optional(),
   citation: z.string().optional(),
+  citationDate: z.string().optional(),
+}).superRefine((data, ctx) => {
+  if (data.citation && !data.citationDate) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'citationDate is required when citation is provided',
+      path: ['citationDate'],
+    });
+  }
 });
 
 const presidents = defineCollection({

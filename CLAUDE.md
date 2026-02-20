@@ -30,7 +30,7 @@ Each ex-president is a Markdown file in `src/content/presidents/` with YAML fron
 - `startTime`, `endTime` — millisecond offsets for same-day ordering;
   -  `endTime` is only needed in the rare case when two ex-presidents die on the same day;
   - `startTime` would only be needed if two presidents left office on the same day (hopefully never needed)
-- `facts[]` — array of `{ detail, startDate?, endDate?, citation? }`
+- `facts[]` — array of `{ detail, startDate?, endDate?, citation?, citationDate? }` — `citationDate` is required (YYYY-MM-DD) whenever `citation` is set; not displayed, informational only
 
 **Partial date format:** Dates in facts support `"YYYY"`, `"YYYY-MM"`, or `"YYYY-MM-DD"`. All parsing/formatting is handled in `src/lib/dates.ts`.
 
