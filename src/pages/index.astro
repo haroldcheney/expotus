@@ -16,19 +16,17 @@ const presidents = allPresidents
     <h1>Ex-Presidents of the United States</h1>
     <p>
       This is a list of all ex-Presidents of the United States and their periods of ex-presidency.
-      You can change how the list is sorted by clicking on the column headers.
-      To see details about an ex-president, click on his name.
     </p>
     <SortableTable>
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th data-sortable="name">Name</th>
-            <th data-sortable="start">Start</th>
-            <th data-sortable="end">End</th>
-            <th data-sortable="duration">Duration</th>
-            <th data-sortable="days">Days</th>
+            <th scope="col">#</th>
+            <th scope="col" data-sortable="name">Name</th>
+            <th scope="col" data-sortable="start">Start</th>
+            <th scope="col" data-sortable="end">End</th>
+            <th scope="col" data-sortable="duration">Duration</th>
+            <th scope="col" data-sortable="days">Days</th>
           </tr>
         </thead>
         <tbody>

@@ -25,15 +25,14 @@ const allFacts = sorted.flatMap((p) =>
     <h1>Ex-Presidential Facts</h1>
     <p>
       This is a list of facts about all ex-presidents.
-      You can change how the list is sorted by clicking on the column headers.
     </p>
     <SortableTable>
       <table>
         <thead>
           <tr>
-            <th data-sortable="president">Ex-President</th>
-            <th data-sortable="dates">Dates</th>
-            <th>Description</th>
+            <th scope="col" data-sortable="president">Ex-President</th>
+            <th scope="col" data-sortable="dates">Dates</th>
+            <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>

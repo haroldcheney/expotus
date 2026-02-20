@@ -19,13 +19,19 @@
     let ascending = true;
 
     headers.forEach((th) => {
-      th.style.cursor = 'pointer';
-      const link = document.createElement('a');
-      link.href = '#';
-      link.textContent = th.textContent;
-      link.addEventListener('click', (e) => e.preventDefault());
+      th.setAttribute('aria-sort', 'none');
+
+      const btn = document.createElement('button');
+      btn.textContent = th.textContent?.trim() ?? '';
+
+      const indicator = document.createElement('span');
+      indicator.setAttribute('aria-hidden', 'true');
+      indicator.className = 'sort-indicator';
+      indicator.textContent = ' \u2195';
+
+      btn.appendChild(indicator);
       th.textContent = '';
-      th.appendChild(link);
+      th.appendChild(btn);
 
       th.addEventListener('click', () => {
         const key = th.getAttribute('data-sortable')!;
@@ -36,9 +42,17 @@
           ascending = true;
         }
 
-        // Update header classes
-        headers.forEach((h) => h.classList.remove('asc', 'desc'));
+        // Update header classes, aria-sort, and indicators
+        headers.forEach((h) => {
+          h.classList.remove('asc', 'desc');
+          h.setAttribute('aria-sort', 'none');
+          const ind = h.querySelector('.sort-indicator');
+          if (ind) ind.textContent = ' \u2195';
+        });
         th.classList.add(ascending ? 'asc' : 'desc');
+        th.setAttribute('aria-sort', ascending ? 'ascending' : 'descending');
+        const ind = th.querySelector('.sort-indicator');
+        if (ind) ind.textContent = ascending ? ' \u25B2' : ' \u25BC';
 
         // Sort rows
         const rows = Array.from(tbody.querySelectorAll('tr'));
@@ -49,7 +63,6 @@
           const aVal = aCell.getAttribute('data-sort-value') || aCell.textContent || '';
           const bVal = bCell.getAttribute('data-sort-value') || bCell.textContent || '';
 
-          // Try numeric comparison first
           const aNum = parseFloat(aVal);
           const bNum = parseFloat(bVal);
           if (!isNaN(aNum) && !isNaN(bNum)) {
