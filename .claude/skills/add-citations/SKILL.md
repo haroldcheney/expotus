@@ -56,7 +56,7 @@ Do **not** add:
 
 ### Search effort limit
 
-Spend at most **10 distinct search queries** per fact. If no acceptable source is found after 3 attempts, mark the fact as **not found** and move on. Do not spin forever on a single hard fact.
+Spend at most **10 distinct search queries** per fact. If no acceptable source is found after 10 attempts, mark the fact as **not found** and move on. Do not spin forever on a single hard fact.
 
 ### Citation fields to write
 
