@@ -20,6 +20,8 @@ facts:
     startDate: "2001"
   - detail: "Awarded the Nobel Peace Prize"
     startDate: "2002"
+    citation: "https://www.nobelprize.org/prizes/peace/2002/carter/facts/"
+    citationDate: "2026-02-20"
   - detail: "Assisted unofficial Israeli and Palestinian negotiators in designing a model agreement for peace"
     startDate: "2002"
     endDate: "2003"

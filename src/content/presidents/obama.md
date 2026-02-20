@@ -8,6 +8,8 @@ endTime: 0
 facts:
   - detail: "Published memoir <cite>A Promised Land</cite>"
     startDate: "2020-11-17"
+    citation: "https://www.penguinrandomhouse.com/books/562882/a-promised-land-by-barack-obama/"
+    citationDate: "2026-02-20"
   - detail: "Founded Higher Ground Productions with Michelle Obama, producing films and series for Netflix"
     startDate: "2018"
   - detail: "Awarded the John F. Kennedy Profile in Courage Award"
