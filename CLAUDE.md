@@ -63,13 +63,13 @@ CSS lives in `public/styles/`. No CSS framework; plain CSS.
 All work should follow this GitHub-based workflow:
 
 1. **Start from an issue** — every piece of work must have a corresponding GitHub issue. Create one if it doesn't exist yet (`gh issue create`).
-2. **Create a branch** — when starting work, create a branch named after the issue number and a short description (e.g., `42-fix-era-calculation`).
+2. **Create a branch** — fetch the latest `master` from remote, then create a branch from it named after the issue number and a short description (e.g., `42-fix-era-calculation`).
 3. **Open a pull request** — when work is complete, open a PR that references the issue (e.g., "Closes #42" in the PR body). The PR will be merged into `master`.
 
 ```bash
-gh issue create --title "..." --body "..."   # create an issue
-git checkout -b 42-short-description         # create and switch to branch
-gh pr create                                 # open a pull request when done
+gh issue create --title "..." --body "..."           # create an issue
+git fetch origin && git checkout -b 42-short-description origin/master  # branch from latest remote master
+gh pr create                                          # open a pull request when done
 ```
 
 ## Adding or Updating a President
