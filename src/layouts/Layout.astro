@@ -11,14 +11,17 @@ const { title = 'exPotus.com' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/main.css`} />
   </head>
   <body>
     <div class="page">
-      <div id="logo">
-        <img src={`${import.meta.env.BASE_URL}images/expotus_logo.png`} alt="exPOTUS logo" />
-      </div>
-      <div id="tagline">Fun facts about ex-Presidents of the United States</div>
+      <header>
+        <div id="site-title"><a href={`${import.meta.env.BASE_URL}`}>exPOTUS<span class="site-tld">.com</span></a></div>
+        <div id="tagline">Fun facts about ex-Presidents of the United States</div>
+      </header>
       <slot />
     </div>
   </body>
