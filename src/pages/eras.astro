@@ -29,20 +29,19 @@ const base = import.meta.env.BASE_URL;
     <h1>Ex-Presidential Eras</h1>
     <p>
       This is a list of the times in history when the number of ex-presidents changed.
-      You can change how the list is sorted by clicking on the column headers.
     </p>
     <SortableTable>
       <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th data-sortable="start">Start</th>
-            <th>End</th>
-            <th data-sortable="duration">Duration</th>
-            <th>Days</th>
-            <th data-sortable="count">Count</th>
-            <th>List</th>
-            <th>Change</th>
+            <th scope="col">#</th>
+            <th scope="col" data-sortable="start">Start</th>
+            <th scope="col">End</th>
+            <th scope="col" data-sortable="duration">Duration</th>
+            <th scope="col">Days</th>
+            <th scope="col" data-sortable="count">Count</th>
+            <th scope="col">List</th>
+            <th scope="col">Change</th>
           </tr>
         </thead>
         <tbody>

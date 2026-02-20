@@ -7,22 +7,22 @@ const { active } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
-<div class="nav">
+<nav class="nav" aria-label="Site">
   {active === 'presidents'
-    ? <span class="menuButton">ex-Presidents</span>
+    ? <span class="menuButton active" aria-current="page">ex-Presidents</span>
     : <span class="menuButton"><a href={`${base}`}>ex-Presidents</a></span>
   }
   {active === 'facts'
-    ? <span class="menuButton">Facts</span>
+    ? <span class="menuButton active" aria-current="page">Facts</span>
     : <span class="menuButton"><a href={`${base}facts/`}>Facts</a></span>
   }
   {active === 'eras'
-    ? <span class="menuButton">Eras</span>
+    ? <span class="menuButton active" aria-current="page">Eras</span>
     : <span class="menuButton"><a href={`${base}eras/`}>Eras</a></span>
   }
   {active === 'about'
-    ? <span class="menuButton">About</span>
+    ? <span class="menuButton active" aria-current="page">About</span>
     : <span class="menuButton"><a href={`${base}about/`}>About</a></span>
   }
   <slot />
-</div>
+</nav>
