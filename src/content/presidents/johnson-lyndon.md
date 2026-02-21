@@ -10,4 +10,6 @@ endTime: 0
 facts:
   - detail: "Published his memoirs, <cite>The Vantage Point</cite>"
     startDate: "1971"
+    citation: "https://en.wikipedia.org/wiki/The_Vantage_Point"
+    citationDate: "2026-02-20"
 ---

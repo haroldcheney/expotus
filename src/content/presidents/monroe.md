@@ -10,4 +10,6 @@ facts:
   - detail: "Served on the Board of Visitors of the University of Virginia"
     startDate: "1826"
     endDate: "1831"
+    citation: "https://en.wikipedia.org/wiki/James_Monroe"
+    citationDate: "2026-02-20"
 ---

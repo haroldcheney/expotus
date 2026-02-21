@@ -21,4 +21,6 @@ facts:
     citationDate: "2026-02-20"
   - detail: "Appointed by President Eisenhower to chair the Second Commission on Organization of the Executive Branch of the Government"
     startDate: "1953"
+    citation: "https://www.presidency.ucsb.edu/documents/statement-the-president-upon-appointing-members-the-second-hoover-commission"
+    citationDate: "2026-02-20"
 ---
