@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "audit-citations": "node scripts/audit-citations.js",
-    "prepare": "git config core.hooksPath .githooks"
+    "audit-citations": "node scripts/audit-citations.js"
   },
   "dependencies": {
     "astro": "^5.0.0"
