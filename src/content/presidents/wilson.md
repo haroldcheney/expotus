@@ -9,4 +9,6 @@ endTime: 0
 facts:
   - detail: "Served as president of the American Historical Association"
     startDate: "1924"
+    citation: "https://www.historians.org/person/woodrow-wilson/"
+    citationDate: "2026-02-20"
 ---

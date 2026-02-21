@@ -12,6 +12,10 @@ facts:
     citationDate: "2026-02-20"
   - detail: "Founded Higher Ground Productions with Michelle Obama, producing films and series for Netflix"
     startDate: "2018"
+    citation: "https://about.netflix.com/en/news/netflix-to-partner-with-barack-and-michelle-obama"
+    citationDate: "2026-02-20"
   - detail: "Awarded the John F. Kennedy Profile in Courage Award"
     startDate: "2017-05-07"
+    citation: "https://www.jfklibrary.org/about-us/news-and-press/press-releases/2017-profile-in-courage-award"
+    citationDate: "2026-02-20"
 ---

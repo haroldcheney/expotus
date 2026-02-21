@@ -9,4 +9,6 @@ endTime: 0
 facts:
   - detail: "Accused by Secretary of State William Seward of being a member of the seditious Knights of the Golden Circle, which he denied"
     startDate: "1862"
+    citation: "https://www.shapell.org/manuscript/former-president-franklin-pierce-accused-of-treason-by-seward/"
+    citationDate: "2026-02-20"
 ---

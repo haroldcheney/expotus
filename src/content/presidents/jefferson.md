@@ -9,4 +9,6 @@ endTime: 0
 facts:
   - detail: "Founded the University of Virginia"
     startDate: "1819"
+    citation: "https://www.monticello.org/research-education/thomas-jefferson-encyclopedia/timeline-founding-university-virginia/"
+    citationDate: "2026-02-20"
 ---
