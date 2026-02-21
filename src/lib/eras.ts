@@ -89,7 +89,9 @@ export function calculateEras(presidents: President[]): Era[] {
       previous.endTime = event.startTime;
 
       if (previous.startDate === event.startDate && previous.startTime === event.startTime) {
-        // Combine simultaneous events
+        // Combine simultaneous events; end is not yet known so reset it
+        previous.endDate = null;
+        previous.endTime = 0;
         if (event.added) {
           if (previous.added) {
             throw new Error(
