@@ -21,18 +21,9 @@ No test or lint commands are configured.
 
 ### Data Layer
 
-Each ex-president is a Markdown file in `src/content/presidents/` with YAML frontmatter validated by Zod schema in `src/content.config.ts`. Files are named `lastname-firstname.md` (e.g., `obama.md`, `bush-george-w.md`). Cleveland has two entries (`cleveland-1st.md`, `cleveland-2nd.md`); multi-term or multi-person names use suffixes.
+Each ex-president is a Markdown file in `src/content/presidents/` with YAML frontmatter validated by Zod schema in `src/content.config.ts`. See README for file naming conventions and the full frontmatter field reference.
 
-**President frontmatter fields:**
-- `id` — ordinal number (1-indexed, Cleveland counted once)
-- `firstName`, `lastName`, `uniqueName` (optional display override)
-- `startDate`, `endDate` — ex-presidency span (omit `endDate` if still living)
-- `startTime`, `endTime` — millisecond offsets for same-day ordering;
-  -  `endTime` is only needed in the rare case when two ex-presidents die on the same day;
-  - `startTime` would only be needed if two presidents left office on the same day (hopefully never needed)
-- `facts[]` — array of `{ detail, startDate?, endDate?, citation?, citationDate? }` — `citationDate` is required (YYYY-MM-DD) whenever `citation` is set; not displayed, informational only
-
-**Partial date format:** Dates in facts support `"YYYY"`, `"YYYY-MM"`, or `"YYYY-MM-DD"`. All parsing/formatting is handled in `src/lib/dates.ts`.
+Date parsing for both the ex-presidency span and fact dates is handled by `src/lib/dates.ts`.
 
 ### Pages & Routing
 
@@ -74,20 +65,4 @@ gh pr create                                          # open a pull request when
 
 ## Adding or Updating a President
 
-Edit or create a file in `src/content/presidents/`. The `detail` field in facts may include HTML (e.g., `<cite>` tags) and is rendered with `set:html`.
-
-Example:
-```yaml
----
-id: 36
-firstName: "Barack"
-lastName: "Obama"
-startDate: "2017-01-20"
-startTime: 0
-endTime: 0
-facts:
-  - detail: "Published memoir <cite>A Promised Land</cite>"
-    startDate: "2020-11-17"
-    citation: "https://example.com/source"
----
-```
+Edit or create a file in `src/content/presidents/`. See README for the field reference and an example. Note: the `detail` field is rendered with `set:html`, so HTML tags like `<cite>` are valid.
