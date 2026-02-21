@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import SortableTable from '../components/SortableTable.astro';
 import { formatDate, formatDuration, formatNumber } from '../lib/dates';
-import { calculateEras, getFullName, getShortName, type President } from '../lib/eras';
+import { calculateEras, getShortName, type President } from '../lib/eras';
 
 const allPresidents = await getCollection('presidents');
 const presidentData: President[] = allPresidents.map((p) => ({
