@@ -30,6 +30,8 @@ facts:
     citationDate: "2026-02-20"
   - detail: "Attended the First Peace Conference at The Hague"
     startDate: "1899"
+    citation: "https://www.battlefields.org/learn/biographies/benjamin-harrison"
+    citationDate: "2026-02-22"
   - detail: "Served as an attorney for the Republic of Venezuela in their boundary dispute with the United Kingdom, losing the case"
     startDate: "1900"
     citation: "https://bhpsite.org/learn/benjamin-harrison/the-lawyer/"
